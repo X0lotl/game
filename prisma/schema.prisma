@@ -13,8 +13,9 @@ datasource db {
 // models
 
 model Game {
-  id       String     @id @default(cuid())
-  name     String
+  id   String @id @default(cuid())
+  name String
+
   UserGame UserGame[]
   GameStep GameStep[]
 
@@ -22,11 +23,15 @@ model Game {
 }
 
 model GameStep {
-  id         String     @id @default(cuid())
-  title      String
-  xp         Int
-  gameId     String
-  game       Game       @relation(fields: [gameId], references: [id])
+  id    String @id @default(cuid())
+  title String
+
+  xp   Int?
+  cost Int?
+
+  gameId String
+  game   Game   @relation(fields: [gameId], references: [id])
+
   childSteps GameStep[] @relation("ChildSteps")
   parentStep GameStep?  @relation("ChildSteps", fields: [parentId], references: [id])
   parentId   String?
@@ -34,21 +39,29 @@ model GameStep {
   @@map(name: "game_steps")
 }
 
-model User {
-  id       String     @id @default(cuid())
-  name     String
-  email    String     @unique
-  UserGame UserGame[]
-
-  @@map(name: "users")
-}
-
 model UserGame {
+  id String @id @default(cuid())
+
   userId String
   user   User   @relation(fields: [userId], references: [id])
   gameId String
   game   Game   @relation(fields: [gameId], references: [id])
 
-  @@unique([userId, gameId])
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  updatedAt DateTime @default(now()) @map(name: "updated_at")
+
   @@map(name: "user_games")
+}
+
+model User {
+  id    String @id @default(cuid())
+  name  String
+  email String @unique
+
+  xp      Int
+  balance Int
+
+  UserGame UserGame[]
+
+  @@map(name: "users")
 }
