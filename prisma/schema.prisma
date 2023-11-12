@@ -32,6 +32,8 @@ model GameStep {
   gameId String
   game   Game   @relation(fields: [gameId], references: [id])
 
+  mediaSrc String?
+
   childSteps GameStep[] @relation("ChildSteps")
   parentStep GameStep?  @relation("ChildSteps", fields: [parentId], references: [id])
   parentId   String?
