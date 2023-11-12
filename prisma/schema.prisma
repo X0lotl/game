@@ -1,0 +1,54 @@
+// general
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+}
+
+// models
+
+model Game {
+  id       String     @id @default(cuid())
+  name     String
+  UserGame UserGame[]
+  GameStep GameStep[]
+
+  @@map(name: "games")
+}
+
+model GameStep {
+  id         String     @id @default(cuid())
+  title      String
+  xp         Int
+  gameId     String
+  game       Game       @relation(fields: [gameId], references: [id])
+  childSteps GameStep[] @relation("ChildSteps")
+  parentStep GameStep?  @relation("ChildSteps", fields: [parentId], references: [id])
+  parentId   String?
+
+  @@map(name: "game_steps")
+}
+
+model User {
+  id       String     @id @default(cuid())
+  name     String
+  email    String     @unique
+  UserGame UserGame[]
+
+  @@map(name: "users")
+}
+
+model UserGame {
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+  gameId String
+  game   Game   @relation(fields: [gameId], references: [id])
+
+  @@unique([userId, gameId])
+  @@map(name: "user_games")
+}
