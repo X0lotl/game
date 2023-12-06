@@ -197,10 +197,13 @@
     "id": 31,
     "title": "Врешті піду в Могилянку",
     "src": "media/preview/preview.go_to_uni.mp4",
-    "nextStepId": 24
+  "exam": true
   },
   {
-    "id": 32
+    "id": 32,
+    "title": "Не зарах",
+    "src": "media/preview/preview.exam.fail.mp4",
+    "fail": true
   },
   {
     "id": 33
