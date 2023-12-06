@@ -106,7 +106,7 @@ const InProgressPage: FC = () => {
         onEnded={handleEnded}
         loop={isLooping}
       />
-      <Player src={currentStep.src} onEnded={handleEnded} loop={isLooping} />
+      {/* <Player src={currentStep.src} onEnded={handleEnded} loop={isLooping} /> */}
 
       {currentStep.leftStepId && currentStep.rightStepId && (
         <div className="grid grid-cols-2 gap-x-4 mt-4">
