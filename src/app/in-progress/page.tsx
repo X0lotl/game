@@ -3,7 +3,7 @@
 import Player from '@/frontend/components/Player/Player';
 import rawSteps from '@/config/video.config.json';
 import { Step } from '@/types/config.typedefs';
-import { FC, useCallback, useEffect, useState } from 'react';
+import { FC, useCallback, useEffect, useRef, useState } from 'react';
 import Button from '@/frontend/ui/Button/Button';
 import { ROUTES } from '@/constants/routes';
 import { useGameContext } from '@/frontend/context/GameContext';
@@ -20,10 +20,15 @@ const InProgressPage: FC = () => {
 
   const [currentStep, setCurrentStep] = useState(steps[0]);
   const [isLooping, setIsLooping] = useState(false);
+  const [count, setCount ] = useState(0);
+
+  const [hidePlayIcon, setIsPlayIconHidden] = useState(false);
 
   useEffect(() => {
+    setIsPlayIconHidden(false);
     if (stepID) {
       setCurrentStep(steps.find((step) => step.id === Number(stepID))!);
+      setIsPlayIconHidden(true);
     }
 
     if(currentStep.end || currentStep.exam) {
@@ -65,6 +70,8 @@ const InProgressPage: FC = () => {
     if (currentStep.money) {
       changeMoney(currentStep.money);
     }
+
+    resolveNextStep();
   }, [changeMoney, changeXp, currentStep.money, currentStep.xp]);
 
   const resolveNextStep = useCallback(() => {
@@ -105,9 +112,8 @@ const InProgressPage: FC = () => {
         src={currentStep.src}
         onEnded={handleEnded}
         loop={isLooping}
+        hidePlayIcon={hidePlayIcon}
       />
-      {/* <Player src={currentStep.src} onEnded={handleEnded} loop={isLooping} /> */}
-
       {currentStep.leftStepId && currentStep.rightStepId && (
         <div className="grid grid-cols-2 gap-x-4 mt-4">
           {renderControl(currentStep.leftStepId)}

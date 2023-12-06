@@ -8,10 +8,11 @@ interface Props {
   src: string;
   onEnded?: () => void;
   loop?: boolean;
+  hidePlayIcon?: boolean;
 }
 
 const Player: FC<Props> = (props) => {
-  const { src, onEnded, loop } = props;
+  const { src, onEnded, loop, hidePlayIcon } = props;
 
   const [isLoaded, setIsLoaded] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false)
@@ -33,6 +34,10 @@ const Player: FC<Props> = (props) => {
     return null;
   }
 
+  if (hidePlayIcon && !isPlaying) {
+    setIsPlaying(true);
+  }
+
   const onPlayButtonClick = () => {
     setIsPlaying(true)
     videoElement.current?.play()
@@ -46,7 +51,7 @@ const Player: FC<Props> = (props) => {
   return (
     <div className='relative overflow-hidden rounded-xl w-[75vw]'>
       {
-        !isPlaying && (
+        (!isPlaying) && (
           <div onClick={onPlayButtonClick} className='absolute top-0 left-0 w-full h-full z-10 bg-black/50 grid place-items-center cursor-pointer'>
             <PlayIcon/>
           </div>
