@@ -2,8 +2,16 @@
 
 import { ROUTES } from "@/constants/routes";
 import Link from "@/frontend/ui/Link/Link";
+import { useEffect, useState } from "react";
 
 const SuccessPage = () => {
+  const [audio] = useState(new Audio('/media/audio/success-bg-sound.mp3'))
+
+  useEffect(() => {
+    audio.loop = false;
+    audio.play()
+  }, [])
+
   return (
     <div className='flex flex-col items-center gap-6'>
       <span className='text-4xl font-bold text-green-600'>
@@ -21,6 +29,7 @@ const SuccessPage = () => {
       <Link
         className="px-24 py-2 mt-3 text-lg uppercase font-bold bg-blue-500 text-white rounded-md hover:bg-blue-700"
         href={ROUTES.inProgress}
+        onClick={() => audio.pause()}
       >
         Почати спочатку
       </Link>

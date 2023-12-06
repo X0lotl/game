@@ -6,7 +6,7 @@ import { ROUTES } from "@/constants/routes";
 
 const FailPage: FC = () => {
 const onFail = () => {
-  location.replace('/in-progress?id=32');
+  location.replace('/in-progress?id=32&interacted=true');
 }
 
   return (

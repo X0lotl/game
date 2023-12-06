@@ -4,18 +4,18 @@ import { FC } from "react";
 import { ROUTES } from "@/constants/routes";
 
 const FailPage: FC = () => {
-const onCorrect = () => {
-  location.replace('/in-progress?id=25&interacted=true');
-};
+  const onCorrect = () => {
+    location.replace('/in-progress?id=25&interacted=true');
+  };
 
-const onFail = () => {
-  location.replace('/in-progress?id=32&interacted=true');
-}
+  const onFail = () => {
+    location.replace('/in-progress?id=32&interacted=true');
+  }
 
   return (
     <div className="flex flex-col items-center gap-6">
       <span className="text-4xl font-bold text-black">
-      Як звати викладача?
+        Як звати викладача?
       </span>
       <div className="grid grid-cols-2 gap-4">
         <button
