@@ -127,13 +127,13 @@
   },
   {
     "id": 19,
-    "title": "Яку булку обрати?",
+    "title": "Булка за 24грн",
     "src": "media/chosen/chosen.get_bun.24.mp4",
     "nextStepId": 21
   },
   {
     "id": 20,
-    "title": "Яку булку обрати?",
+    "title": "Булка за 31грн",
     "src": "media/chosen/chosen.get_bun.31.mp4",
     "nextStepId": 21
   },
@@ -160,7 +160,7 @@
     "id": 24,
     "title": "Зараз буде екзамен",
     "src": "media/preview/preview.exam.bribe.no.mp4",
-    "nextStepId": 25
+    "exam": true
   },
   {
     "id": 25,
@@ -203,13 +203,13 @@
     "id": 31,
     "title": "Врешті піду в Могилянку",
     "src": "media/preview/preview.go_to_uni.mp4",
-  "exam": true
+    "exam": true
   },
   {
     "id": 32,
     "title": "Не зарах",
     "src": "media/preview/preview.exam.fail.mp4",
-    "fail": true
+    "fatal": true
   },
   {
     "id": 33

@@ -26,13 +26,16 @@ const InProgressPage = () => {
   const [hidePlayIcon, setIsPlayIconHidden] = useState(false);
 
   useEffect(() => {
-    setIsPlayIconHidden(false);
-
     const stepID = searchParams?.get("id");
 
     if (stepID) {
       setCurrentStep(steps.find((step) => step.id === Number(stepID))!);
-      setIsPlayIconHidden(true);
+      setIsPlayIconHidden(searchParams.get("interacted") === "true")
+
+      if(currentStep.end || currentStep.exam) {
+        setIsLooping(false);
+        return;
+      }
     }
   }, [])
 
@@ -116,6 +119,10 @@ const InProgressPage = () => {
     [handleEitherStep, steps]
   );
 
+  const handleAutoPlayError = () => {
+    setIsPlayIconHidden(true)
+  }
+
   return (
     <div>
       {isProgressVisible && (
@@ -129,6 +136,7 @@ const InProgressPage = () => {
         onEnded={handleEnded}
         loop={isLooping}
         hidePlayIcon={hidePlayIcon}
+        onAutoPlayError={handleAutoPlayError}
       />
       {currentStep.leftStepId && currentStep.rightStepId && (
         <div className="grid grid-cols-2 gap-x-4 mt-4">

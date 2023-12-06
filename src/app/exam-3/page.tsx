@@ -5,11 +5,11 @@ import { ROUTES } from "@/constants/routes";
 
 const FailPage: FC = () => {
 const onCorrect = () => {
-  location.replace('/in-progress?id=25');
+  location.replace('/in-progress?id=25&interacted=true');
 };
 
 const onFail = () => {
-  location.replace('/in-progress?id=32');
+  location.replace('/in-progress?id=32&interacted=true');
 }
 
   return (

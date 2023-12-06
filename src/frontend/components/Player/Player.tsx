@@ -9,6 +9,7 @@ interface Props {
   onEnded?: () => void;
   loop?: boolean;
   hidePlayIcon?: boolean;
+  onAutoPlayError?: () => void;
 }
 
 const Player: FC<Props> = (props) => {
@@ -26,7 +27,12 @@ const Player: FC<Props> = (props) => {
   useEffect(() => {
     setTimeout(() => {
       videoElement.current?.load()
-      videoElement.current?.play()
+      try {
+        videoElement.current?.play()
+      } catch (e) {
+        if(props.onAutoPlayError)
+          props.onAutoPlayError()
+      }
     }, 0)
   }, [src])
 
