@@ -3,9 +3,10 @@
 import { FC } from "react";
 
 const FailPage: FC = () => {
-const onFail = () => {
-  location.replace('/in-progress?id=32&interacted=true');
-}
+  const onFail = () => {
+    location.replace('/in-progress?id=32&interacted=true');
+  }
+
   return (
     <div className="flex flex-col items-center gap-6">
       <span className="text-4xl font-bold text-black">
