@@ -19,25 +19,20 @@ const InProgressPage = () => {
 
   const [isProgressVisible, setIsProgressVisible] = useState(true);
 
-  const [currentStep, setCurrentStep] = useState(steps[0]);
+  const [currentStep, setCurrentStep] = useState(searchParams?.get('id') ? steps[Number(searchParams?.get('id'))!] :steps[0]);
   const [isLooping, setIsLooping] = useState(false);
-  // const [count, setCount] = useState(0);
 
   const [hidePlayIcon, setIsPlayIconHidden] = useState(false);
 
   useEffect(() => {
+    setIsPlayIconHidden(false);
+
     const stepID = searchParams?.get("id");
 
-    if (stepID) {
-      setCurrentStep(steps.find((step) => step.id === Number(stepID))!);
-      setIsPlayIconHidden(searchParams.get("interacted") === "true")
-
-      if(currentStep.end || currentStep.exam) {
-        setIsLooping(false);
-        return;
-      }
+    if (currentStep.id === Number(stepID)!) {
+      setIsPlayIconHidden(true);
     }
-  }, [])
+  }, [currentStep])
 
   useEffect(() => {
     if(currentStep.end || currentStep.exam) {

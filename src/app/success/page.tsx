@@ -31,7 +31,7 @@ const SuccessPage = () => {
         href={ROUTES.inProgress}
         onClick={() => audio.pause()}
       >
-        Почати спочатку
+        Грати ще раз
       </Link>
     </div>
   );
