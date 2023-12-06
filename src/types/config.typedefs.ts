@@ -8,4 +8,5 @@ export interface Step {
   nextStepId?: number;
   leftStepId?: number;
   rightStepId?: number;
+  end?: boolean;
 }

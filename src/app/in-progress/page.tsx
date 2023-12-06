@@ -6,6 +6,7 @@ import { Step } from '@/types/config.typedefs';
 import { FC, useCallback, useEffect, useState } from 'react';
 import Button from '@/frontend/ui/Button/Button';
 import { ROUTES } from '@/constants/routes';
+import { redirect } from 'next/dist/server/api-utils';
 // import { redirect } from 'next/dist/client/components/redirect';
 
 const InProgressPage: FC = () => {
@@ -15,6 +16,10 @@ const InProgressPage: FC = () => {
   const [isLooping, setIsLooping] = useState(false);
 
   useEffect(() => {
+    if (currentStep.end) {
+      location.replace("/success");
+    }
+
     if (!currentStep || currentStep.fatal) {
       setIsLooping(false);
     } else {
