@@ -6,7 +6,7 @@ import { Step } from '@/types/config.typedefs';
 import { FC, useCallback, useEffect, useState } from 'react';
 import Button from '@/frontend/ui/Button/Button';
 import { ROUTES } from '@/constants/routes';
-import { redirect } from 'next/dist/client/components/redirect';
+// import { redirect } from 'next/dist/client/components/redirect';
 
 const InProgressPage: FC = () => {
   const steps = rawSteps as Step[];
@@ -23,6 +23,7 @@ const InProgressPage: FC = () => {
   }, [currentStep]);
 
   const handleEitherStep = useCallback((stepId: number) => {
+    console.log('stepId', stepId)
     const eitherStep = steps.find((step) => (
       step.id === stepId
     ));
@@ -32,7 +33,8 @@ const InProgressPage: FC = () => {
 
   const handleEnded = useCallback(() => {
     if (currentStep.fatal) {
-      redirect(ROUTES.fail)
+      location.replace(ROUTES.fail)
+      return
     }
 
     const { nextStepId } = currentStep;
@@ -70,7 +72,7 @@ const InProgressPage: FC = () => {
       />
 
       {currentStep.leftStepId && currentStep.rightStepId && (
-        <div>
+        <div className='grid grid-cols-2 gap-x-4 mt-4'>
           {renderControl(currentStep.leftStepId)}
           {renderControl(currentStep.rightStepId)}
         </div>
