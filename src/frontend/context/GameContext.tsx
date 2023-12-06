@@ -8,10 +8,8 @@ interface Context {
   xp: number;
   money: number;
   status: GameStatus;
-  increaseXp: (_: number) => void;
-  decreaseXp: (_: number) => void;
-  increaseMoney: (_: number) => void;
-  decreaseMoney: (_: number) => void;
+  changeXp: (_: number) => void;
+  changeMoney: (_: number) => void;
   setStatus: Dispatch<SetStateAction<GameStatus>>;
 }
 
@@ -23,11 +21,9 @@ const GameContext = createContext<Context>({
   xp: 0,
   money: 0,
   status: GameStatus.Start,
-  increaseXp: emptyFunction,
-  decreaseXp: emptyFunction,
-  increaseMoney: emptyFunction,
-  decreaseMoney: emptyFunction,
   setStatus: emptyFunction,
+  changeXp: emptyFunction,
+  changeMoney: emptyFunction,
 });
 
 const GameContextProvider: FC<Props> = (props) => {
