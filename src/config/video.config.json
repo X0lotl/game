@@ -1,0 +1,226 @@
+[
+  {
+    "id": 1,
+    "src": "/media/preview/preview.wakeup.mp4",
+    "title": "Ранок",
+    "nextStepId": 2
+  },
+  {
+    "id": 2,
+    "src": "/media/choice/choice.pickup_phone.mp4",
+    "title": "Хтось телефонує...",
+    "leftStepId": 3,
+    "rightStepId": 4
+  },
+  {
+    "id": 3,
+    "src": "/media/chosen/chosen.pickup_phone.yes.mp4",
+    "title": "Прийняти дзвінок",
+    "nextStepId": 5
+  },
+  {
+    "id": 4,
+    "src": "/media/chosen/chosen.pickup_phone.no.mp4",
+    "title": "Відхилити дзвінок",
+    "fatal": true
+  },
+  {
+    "id": 5,
+    "title": "Мама Віталіка пропонує поїсти",
+    "src": "/media/choice/choice.eat.mp4",
+    "leftStepId": 6,
+    "rightStepId": 7
+  },
+  {
+    "id": 6,
+    "title": "Поїсти",
+    "src": "/media/chosen/chosen.eat.yes.mp4",
+    "xp": 10,
+    "nextStepId": 8
+  },
+  {
+    "id": 7,
+    "title": "Піти геть",
+    "src": "/media/chosen/chosen.eat.no.mp4",
+    "xp": 5,
+    "nextStepId": 8
+  },
+  {
+    "id": 8,
+    "title": "Метро чи таксі?",
+    "src": "media/choice/choice.go_taxi_or_subway.mp4",
+    "leftStepId": 9,
+    "rightStepId": 10
+  },
+  {
+    "id": 9,
+    "title": "На таксі",
+    "src": "media/preview/preview.go_taxi.mp4",
+    "nextStepId": 10
+  },
+  {
+    "id": 10,
+    "title": "Зупинка, маршрутка, метро",
+    "src": "media/preview/preview.go_subway.1.mp4",
+    "nextStepId": 11,
+    "xp": -10,
+    "money": -15
+  },
+  {
+    "id": 11,
+    "title": "Дати гроші бабусі?",
+    "src": "media/choice/choice.give_money.mp4",
+    "leftStepId": 12,
+    "rightStepId": 13
+  },
+  {
+    "id": 12,
+    "title": "Дам гроші бабусі",
+    "src": "media/chosen/chosen.give_money.yes.mp4",
+    "money": -5,
+    "nextStepId": 14
+  },
+  {
+    "id": 13,
+    "title": "Не дам гроші бабусі",
+    "src": "media/chosen/chosen.give_money.no.mp4",
+    "fatal": true
+  },
+  {
+    "id": 14,
+    "title": "Їду в метро",
+    "src": "media/preview/preview.go_subway.2.mp4",
+    "money": -8,
+    "nextStepId": 15
+  },
+  {
+    "id": 15,
+    "title": "Контрактова",
+    "src": "media/preview/preview.stand_next_subway.1.mp4",
+    "nextStepId": 16,
+    "xp": -10
+  },
+  {
+    "id": 16,
+    "title": "Піду до крамниці",
+    "src": "media/preview/preview.stand_next_subway.2.mp4",
+    "nextStepId": 17
+  },
+  {
+    "id": 17,
+    "title": "Йду до крамниці",
+    "src": "media/preview/preview.go_to_store.mp4",
+    "nextStepId": 18
+  },
+  {
+    "id": 18,
+    "title": "Яку булку обрати?",
+    "src": "media/choice/choice.get_bun.mp4",
+    "leftStepId": 19,
+    "rightStepId": 20
+  },
+  {
+    "id": 19,
+    "title": "Яку булку обрати?",
+    "src": "media/chosen/chosen.get_bun.24.mp4",
+    "nextStepId": 21
+  },
+  {
+    "id": 20,
+    "title": "Яку булку обрати?",
+    "src": "media/chosen/chosen.get_bun.31.mp4",
+    "nextStepId": 21
+  },
+  {
+    "id": 21,
+    "title": "Сплачу і поїм",
+    "src": "media/preview/preview.got_bun.mp4",
+    "nextStepId": 22
+  },
+  {
+    "id": 22,
+    "title": "До Могилянки чи в кавʼярню?",
+    "src": "media/choice/choice.go_to_cafe_or_uni.mp4",
+    "leftStepId": 23,
+    "rightStepId": 24
+  },
+  {
+    "id": 23,
+    "title": "Йду до кавʼярні",
+    "src": "media/preview/preview.cafe.mp4",
+    "nextStepId": 26
+  },
+  {
+    "id": 24,
+    "title": "Зараз буде екзамен",
+    "src": "media/preview/preview.exam.bribe.no.mp4",
+    "nextStepId": 25
+  },
+  {
+    "id": 25,
+    "title": "Зарах",
+    "src": "media/preview/preview.exam.success.mp4",
+    "end": true
+  },
+  {
+    "id": 26,
+    "title": "Яку каву обрати?",
+    "src": "media/choice/choice.get_coffee.mp4",
+    "leftStepId": 27,
+    "rightStepId": 28
+  },
+  {
+    "id": 27,
+    "title": "Візьму 1 каву",
+    "src": "media/chosen/chosen.get_coffee.1.mp4",
+    "nextStepId": 29
+  },
+  {
+    "id": 28,
+    "title": "Візьму 2 кави",
+    "src": "media/chosen/chosen.get_coffee.2.mp4",
+    "nextStepId": 30
+  },
+  {
+    "id": 29,
+    "title": "Тепер у мене 1 кава",
+    "src": "media/preview/preview.holding_coffee.1.mp4",
+    "nextStepId": 31
+  },
+  {
+    "id": 30,
+    "title": "Тепер у мене 2 кави",
+    "src": "media/preview/preview.holding_coffee.2.mp4",
+    "nextStepId": 31
+  },
+  {
+    "id": 31,
+    "title": "Врешті піду в Могилянку",
+    "src": "media/preview/preview.go_to_uni.mp4",
+    "nextStepId": 24
+  },
+  {
+    "id": 32
+  },
+  {
+    "id": 33
+  },
+  {
+    "id": 34
+  },
+  {
+    "id": 35
+  },
+  {
+    "id": 36
+  },
+  {
+    "id": 37
+  },
+  {
+    "id": 38
+  },
+  {
+    "id": 39
+  }
+]

@@ -1,11 +1,15 @@
-import styles from './page.module.css';
+'use client';
 
-const Home = () => {
-  return (
-    <main className={styles.main}>
-      Hello
-    </main>
-  );
+import { FC, useEffect } from 'react';
+import { redirect } from 'next/navigation';
+import { ROUTES } from '@/constants/routes';
+
+const HomePage: FC = () => {
+  useEffect(() => {
+    redirect(ROUTES.start);
+  }, []);
+
+  return null;
 };
 
-export default Home;
+export default HomePage;
