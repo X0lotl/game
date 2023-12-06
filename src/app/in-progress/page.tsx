@@ -21,14 +21,13 @@ const InProgressPage = () => {
 
   const [currentStep, setCurrentStep] = useState(steps[0]);
   const [isLooping, setIsLooping] = useState(false);
-  const [count, setCount ] = useState(0);
+  // const [count, setCount] = useState(0);
 
   const [hidePlayIcon, setIsPlayIconHidden] = useState(false);
 
   useEffect(() => {
     setIsPlayIconHidden(false);
 
-    console.log(searchParams)
     const stepID = searchParams?.get("id");
 
     if (stepID) {
@@ -52,9 +51,7 @@ const InProgressPage = () => {
 
   const handleEitherStep = useCallback(
     (stepId: number) => {
-      console.log("stepId", stepId);
       const eitherStep = steps.find((step) => step.id === stepId);
-
       setCurrentStep(eitherStep!);
     },
     [steps]
@@ -65,10 +62,12 @@ const InProgressPage = () => {
       location.replace('/exam-1');
       return;
     }
+
     if (currentStep.end) {
       location.replace("/success");
       return
     }
+
     if (currentStep.fatal) {
       location.replace(ROUTES.fail);
       return;
@@ -89,7 +88,7 @@ const InProgressPage = () => {
     ));
 
     setCurrentStep(nextStep!);
-  }, [changeMoney, changeXp, currentStep.money, currentStep.xp]);
+  }, [changeMoney, changeXp, currentStep.money, currentStep.xp, currentStep, steps]);
 
   const resolveNextStep = useCallback(() => {
     const { nextStepId } = currentStep;
