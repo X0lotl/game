@@ -17,6 +17,8 @@ const InProgressPage = () => {
 
   const { changeXp, changeMoney } = useGameContext();
 
+  const [cups, setCups] = useState(0);
+
   const [isProgressVisible, setIsProgressVisible] = useState(true);
 
   const [currentStep, setCurrentStep] = useState(searchParams?.get('id') ? steps[Number(searchParams?.get('id'))!] :steps[0]);
@@ -35,6 +37,8 @@ const InProgressPage = () => {
   }, [currentStep])
 
   useEffect(() => {
+
+
     if(currentStep.end || currentStep.exam) {
       setIsLooping(false);
       return;
@@ -73,6 +77,15 @@ const InProgressPage = () => {
 
     if (currentStep.money) {
       changeMoney(currentStep.money);
+    }
+
+    if (currentStep.cups) {
+      setCups(currentStep.cups);
+    }
+
+    if (currentStep.id === 31 && cups === 2) {
+      console.log(5);
+      location.replace('/in-progress?id=33');
     }
 
     const { nextStepId } = currentStep;

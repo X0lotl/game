@@ -12,7 +12,7 @@ const onFail = () => {
   return (
     <div className="flex flex-col items-center gap-6">
       <span className="text-4xl font-bold text-black">
-      Розмістіть Глибовців у порядку
+      Розмістіть Глибовців у порядку спадання
       </span>
       <div className="grid grid-cols-2 gap-4">
         <Link

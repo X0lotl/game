@@ -18,21 +18,20 @@ const SuccessPage = () => {
         Ви виграли (you won if you&apos;re from England)
       </span>
       <span className="whitespace-pre text-center">
-        Хоміченко Данило - актор, сценарист,  {'\n'}
-        Тарасенко Артем - акторка, сценарист {'\n'}
+        Хоміченко Данило - актор, сценарист, режисер-відомонтажу, розробник  {'\n'}
+        Тарасенко Артем - акторка, сценарист, розробник {'\n'}
         Фетісов Ярослав - відеомонтажер {'\n'}
-        Бачинська Катерина - операторка сценаристка, бабуся {'\n'}
-        Пелович Дмитро - розробник {'\n'}
+        Бачинська Катерина - операторка, сценаристка, бабуся, режисер-постановник {'\n'}
+        Пелович Дмитро - розробник, сценарист {'\n'}
         Відейко Андрій - відеомонтажер {'\n'}
       </span>
 
-      <Link
+      <button
         className="px-24 py-2 mt-3 text-lg uppercase font-bold bg-blue-500 text-white rounded-md hover:bg-blue-700"
-        href={ROUTES.inProgress}
-        onClick={() => audio.pause()}
+        onClick={() => { audio.pause(); location.replace(ROUTES.inProgress)}}
       >
         Грати ще раз
-      </Link>
+      </button>
     </div>
   );
 };

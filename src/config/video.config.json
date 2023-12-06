@@ -178,12 +178,14 @@
   {
     "id": 27,
     "title": "Візьму 1 каву",
+    "cups": 1,
     "src": "media/chosen/chosen.get_coffee.1.mp4",
     "nextStepId": 29
   },
   {
     "id": 28,
     "title": "Візьму 2 кави",
+    "cups": 2,
     "src": "media/chosen/chosen.get_coffee.2.mp4",
     "nextStepId": 30
   },
@@ -203,7 +205,7 @@
     "id": 31,
     "title": "Врешті піду в Могилянку",
     "src": "media/preview/preview.go_to_uni.mp4",
-    "exam": true
+    "nextStepId": 24
   },
   {
     "id": 32,
@@ -212,16 +214,29 @@
     "fatal": true
   },
   {
-    "id": 33
+    "id": 33,
+    "title": "Екзамен 2 кави",
+    "src": "media/preview/preview.exam.bribe.yes.mp4",
+    "nextStepId": 34
   },
   {
-    "id": 34
+    "id": 34,
+    "title": "Вибір хабар екзамен",
+    "src": "media/choice/choice.exam.joking.mp4",
+    "leftStepId": 35,
+    "rightStepId": 36
   },
   {
-    "id": 35
+    "id": 35,
+    "title": "Так це він ;)",
+    "src": "media/chosen/chosen.exam.joking.no.mp4",
+    "fatal": true
   },
   {
-    "id": 36
+    "id": 36,
+    "title": "Ні це просто поганий жарт",
+    "src": "media/chosen/chosen.exam.joking.yes.mp4",
+    "exam": true
   },
   {
     "id": 37

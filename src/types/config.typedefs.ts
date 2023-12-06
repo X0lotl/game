@@ -10,4 +10,5 @@ export interface Step {
   rightStepId?: number;
   end?: boolean;
   exam?: boolean;
+  cups?: number;
 }
