@@ -1,16 +1,39 @@
 'use client';
 
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { ROUTES } from '@/constants/routes';
 import Link from '@/frontend/ui/Link/Link';
 
 const StartPage: FC = () => {
+  const [backgroundMusicEnabled, setBackgroudMusicEnabled] = useState(false)
+
+  const [audio] = useState(new Audio('/media/audio/start-bg-sound.mp3'))
+
+  const handleEnableBackgroundMusicButtonClick = () => {
+    setBackgroudMusicEnabled(true)
+    audio.volume = 0.2
+    audio.play()
+  }
+
+  const onStartButtonClick = () => {
+    audio.pause()
+    location.replace('/in-progress?interacted=true')
+  }
+
   return (
     <div className='flex flex-col items-center gap-4'>
+      {
+        !backgroundMusicEnabled && <button
+          className='fixed top-10 right-10 px-10 py-2 text-md font-medium bg-blue-500 text-white rounded-md hover:bg-blue-700' 
+          onClick={handleEnableBackgroundMusicButtonClick}
+        >
+          Увімкнути фонову музику
+        </button>
+      }
+
       <span className='text-4xl'>
         День з життя могилянця
       </span>
-
       <p className='whitespace-pre text-center'>
         {'\n'}
         Мета гри - успішно скласти екзамен та не померти під час цих спроб. {'\n'}
@@ -30,9 +53,12 @@ const StartPage: FC = () => {
         Бажаю удачі!
       </p>
 
-      <Link className='px-24 py-2 text-lg uppercase font-bold bg-blue-500 text-white rounded-md hover:bg-blue-700' href={ROUTES.inProgress}>
-        Start
-      </Link>
+      <button 
+        className='px-24 py-2 text-lg uppercase font-bold bg-blue-500 text-white rounded-md hover:bg-blue-700' 
+        onClick={onStartButtonClick}
+      >
+        Почати
+      </button>
     </div>
   )
 };

@@ -1,34 +1,33 @@
-import { FC, PropsWithChildren, useReducer, useState } from 'react';
+import { FC, PropsWithChildren, useCallback, useReducer, useState } from 'react';
 import { GameContextProvider } from '@/frontend/context/GameContext';
-import { gameReducer } from '@/frontend/store/game/game.reducer';
-import { useMakeDispatcher } from '@/frontend/store/game/game.hooks/useMakeDispatcher';
-import { ActionType } from '@/frontend/store/game/game.typedefs';
 import { GameStatus } from '@/frontend/types/game.typedefs';
-import { GAME_INITIAL_STATE } from '@/frontend/store/game/game.constants';
+import { INITIAL_MONEY_VALUE, INITIAL_XP_VALUE } from '@/constants/state';
 
 export const GameProvider: FC<PropsWithChildren> = (props) => {
   const { children } = props;
 
+  const [xp, setXp] = useState(INITIAL_XP_VALUE);
+  const [money, setMoney] = useState(INITIAL_MONEY_VALUE);
   const [status, setStatus] = useState(GameStatus.Start);
-  const [{ xp, money }, dispatch] = useReducer(gameReducer, GAME_INITIAL_STATE);
 
-  const increaseXp = useMakeDispatcher(dispatch, ActionType.Increase, 'xp');
-  const decreaseXp = useMakeDispatcher(dispatch, ActionType.Decrease, 'xp');
-  const increaseMoney = useMakeDispatcher(dispatch, ActionType.Increase, 'money');
-  const decreaseMoney = useMakeDispatcher(dispatch, ActionType.Decrease, 'money');
+  const changeXp = useCallback((incomingXp: number) => {
+    setXp((currentXp) => currentXp + incomingXp);
+  }, []);
+
+  const changeMoney = useCallback((incomingMoney: number) => {
+    setMoney((currentMoney) => currentMoney + incomingMoney);
+  }, []);
 
   return (
     <GameContextProvider
       xp={xp}
       money={money}
       status={status}
-      increaseXp={increaseXp}
-      decreaseXp={decreaseXp}
-      increaseMoney={increaseMoney}
-      decreaseMoney={decreaseMoney}
+      changeXp={changeXp}
+      changeMoney={changeMoney}
       setStatus={setStatus}
     >
       {children}
     </GameContextProvider>
-  )
-}
+  );
+};
