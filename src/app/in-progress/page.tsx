@@ -8,15 +8,16 @@ import Button from '@/frontend/ui/Button/Button';
 import { ROUTES } from '@/constants/routes';
 import { useGameContext } from '@/frontend/context/GameContext';
 import ProgressBar from '@/frontend/components/ProgressBar/ProgressBar';
+import { useSearchParams } from 'next/navigation';
 
-const InProgressPage: FC = () => {
+const InProgressPage = () => {
+  const searchParams = useSearchParams()
+
   const steps = rawSteps as Step[];
 
   const { changeXp, changeMoney } = useGameContext();
 
   const [isProgressVisible, setIsProgressVisible] = useState(true);
-  const urlParams = new URLSearchParams(window.location.search);
-  const stepID = urlParams.get("id");
 
   const [currentStep, setCurrentStep] = useState(steps[0]);
   const [isLooping, setIsLooping] = useState(false);
@@ -26,11 +27,17 @@ const InProgressPage: FC = () => {
 
   useEffect(() => {
     setIsPlayIconHidden(false);
+
+    console.log(searchParams)
+    const stepID = searchParams?.get("id");
+
     if (stepID) {
       setCurrentStep(steps.find((step) => step.id === Number(stepID))!);
       setIsPlayIconHidden(true);
     }
+  }, [])
 
+  useEffect(() => {
     if(currentStep.end || currentStep.exam) {
       setIsLooping(false);
       return;
@@ -71,7 +78,17 @@ const InProgressPage: FC = () => {
       changeMoney(currentStep.money);
     }
 
-    resolveNextStep();
+    const { nextStepId } = currentStep;
+
+    if (!nextStepId) {
+      return;
+    }
+
+    const nextStep = steps.find((step) => (
+      step.id === currentStep.nextStepId
+    ));
+
+    setCurrentStep(nextStep!);
   }, [changeMoney, changeXp, currentStep.money, currentStep.xp]);
 
   const resolveNextStep = useCallback(() => {

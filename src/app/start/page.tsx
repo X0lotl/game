@@ -30,8 +30,11 @@ const StartPage: FC = () => {
         Бажаю удачі!
       </p>
 
-      <Link className='px-24 py-2 text-lg uppercase font-bold bg-blue-500 text-white rounded-md hover:bg-blue-700' href={ROUTES.inProgress}>
-        Start
+      <Link 
+        className='px-24 py-2 text-lg uppercase font-bold bg-blue-500 text-white rounded-md hover:bg-blue-700' 
+        href={ROUTES.inProgress}
+      >
+        Почати
       </Link>
     </div>
   )

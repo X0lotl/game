@@ -1,6 +1,5 @@
 "use client";
 
-import { FC } from "react";
 import { ROUTES } from "@/constants/routes";
 import Link from "@/frontend/ui/Link/Link";
 
@@ -23,7 +22,7 @@ const SuccessPage = () => {
         className="px-24 py-2 mt-3 text-lg uppercase font-bold bg-blue-500 text-white rounded-md hover:bg-blue-700"
         href={ROUTES.inProgress}
       >
-        Start again
+        Почати спочатку
       </Link>
     </div>
   );

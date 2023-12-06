@@ -84,6 +84,12 @@
     "id": 13,
     "title": "Не дам гроші бабусі",
     "src": "media/chosen/chosen.give_money.no.mp4",
+    "nextStepId": 49
+  },
+  {
+    "id": 49,
+    "title": "Помилка",
+    "src": "media/video/you-died.mp4",
     "fatal": true
   },
   {

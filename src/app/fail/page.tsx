@@ -9,7 +9,7 @@ const FailPage: FC = () => {
         Ви програли (you failed if you&apos;re from England)
       </span>
       <Link className='px-24 py-2 text-lg uppercase font-bold bg-blue-500 text-white rounded-md hover:bg-blue-700' href={ROUTES.inProgress}>
-        Start again
+        Почати спочатку
       </Link>
     </div>
   ) 
